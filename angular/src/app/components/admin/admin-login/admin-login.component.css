@@ -1,0 +1,38 @@
+.panel-heading {
+  font-size: 22px;
+  font-weight: 800;
+  padding: 2px auto;
+}
+
+ .panel-heading .back {
+  color: black;
+  float: left;
+} 
+
+.error {
+  color: #cc0000;
+}
+
+.panel.register-panel,
+.panel.login-panel {
+  margin-top: 60px;
+  border: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.panel .register-panel-body,
+.panel .login-panel-body {
+  padding: 30px 20px 0px 20px;
+}
+
+.panel .form-control {
+  margin: 0 0 10px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.panel .btn-auth {
+  width: 100%;
+}

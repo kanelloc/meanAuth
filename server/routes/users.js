@@ -27,7 +27,7 @@ router.post('/register', (req, res, next) => {
     newUser.save(function(err) {
         if (err) {
             if (err.name == 'MongoError')
-            res.json({success: false, msg:'Failed to register user'});
+            res.json({success: false, msg:'Email already exists'});
         } else {
             res.json({success: true, msg:'User registered'});
         }
@@ -57,6 +57,7 @@ router.post('/authenticate', (req, res, next) => {
             res.json({
                 success: true, 
                 token:'JWT '+token,
+                msg:'You are now loged in',
                 user: {
                     id: user._id,
                     username: user.username,
@@ -73,7 +74,7 @@ router.post('/authenticate', (req, res, next) => {
 /**
  * Profile Page (GET)
  */
-router.get("/profile", passport.authenticate('jwt', { session: false }), function(req, res){
+router.get("/profile", passport.authenticate('jwt', { session: false }), function(req, res, next){
   res.json({user: req.user});
 });
 

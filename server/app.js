@@ -22,6 +22,9 @@ db.on('error', function(err){
 
 const app = express();
 
+// Set Static Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,6 +46,10 @@ app.get('/', function(req, res){
 // Router section
 let users = require('./routes/users');
 app.use('/users', users);
+
+let admins = require('./routes/auth/auth-admins');
+app.use('/admins', admins);
+
 // Start Server
 app.listen(3000, function () {
     console.log('Server started on port 3000....')

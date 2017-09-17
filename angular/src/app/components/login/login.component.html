@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default register-panel">
+            <div class="panel-heading">
+                <a class="back" [routerLink]="['/']">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <div class="text-center">Login</div>
+            </div>
+            <div class="panel-body register-panel-body">
+                <form (submit)="onLoginSubmit()" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" [(ngModel)]="email" name="email" class="form-control" id="email" 
+                            autofocus placeholder=" Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password"
+                            autofocus placeholder=" Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary btn-auth">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
