@@ -1,7 +1,8 @@
-<div>
-  <ul>
-    <li *ngFor="let user of users">{{user.username}}</li>
-  </ul>
-  <!-- <h2 class="page-header"> Username: {{admin.username}}</h2>
-  <p>Email: {{admin.email}}</p> -->
+<div class="container">
+  <div class="row">
+    <app-global-metrics [totalUsers]= "totalUsers"></app-global-metrics>
+  </div>
+  <div class="row">
+    <app-users-info-panel [users] = "users" [totalUsers]= "totalUsers" (getTotalUsers)="onChangeTotalUsers($event)"></app-users-info-panel>
+  </div>
 </div>

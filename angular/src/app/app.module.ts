@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth/auth.service';
 import { AdminAuthService } from './services/admin-auth/admin-auth.service';
+import { AdminUserCrudService } from './services/admin-user-crud/admin-user-crud.service';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -24,12 +25,15 @@ import { GuestGuard } from './guards/guest.guard';
 
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel/admin-panel.component';
+import { LoadingSpinnerComponent } from './components/ui/loading-spinner/loading-spinner.component';
+import { GlobalMetricsComponent } from './components/admin/admin-panel/global-metrics/global-metrics.component';
+import { UsersInfoPanelComponent } from './components/admin/admin-panel/users-info-panel/users-info-panel.component';
 
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent, canActivate:[GuestGuard]},
-  {path:'login', component: LoginComponent},
+  {path:'login', component: LoginComponent, canActivate:[GuestGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path:'admin/login', component: AdminLoginComponent},
@@ -46,7 +50,10 @@ const appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent,
     AdminLoginComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    LoadingSpinnerComponent,
+    GlobalMetricsComponent,
+    UsersInfoPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,13 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ValidateService, AuthService, AdminAuthService, AuthGuard, AdminGuard, GuestGuard],
+  providers: [ValidateService, 
+    AuthService, 
+    AdminAuthService, 
+    AdminUserCrudService,
+    AuthGuard, 
+    AdminGuard, 
+    GuestGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

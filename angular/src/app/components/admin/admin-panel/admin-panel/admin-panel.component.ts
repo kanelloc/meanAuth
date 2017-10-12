@@ -12,6 +12,8 @@ export class AdminPanelComponent implements OnInit {
   admin: object;
   users: Array<any>;
 
+  totalUsers: number;
+
   constructor(
     private authService: AuthService,
     private adminAuthService: AdminAuthService,
@@ -20,10 +22,17 @@ export class AdminPanelComponent implements OnInit {
   ngOnInit() {
     this.adminAuthService.getAdminProfile().subscribe(dataFromServer => {
       this.users = dataFromServer;
+      this.totalUsers = this.users.length;
     },
     err =>{
       console.log(err);
       return false;
     });
+  }
+
+  onChangeTotalUsers(number: number){
+    this.totalUsers = number;
+    console.log("FATHER");
+    console.log(number);
   }
 }

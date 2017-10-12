@@ -50,6 +50,9 @@ app.use('/users', users);
 let admins = require('./routes/auth/auth-admins');
 app.use('/admins', admins);
 
+let admin = require('./routes/admin/admin');
+app.use('/admin', admin);
+
 // Start Server
 app.listen(3000, function () {
     console.log('Server started on port 3000....')
